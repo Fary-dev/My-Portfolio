@@ -93,12 +93,13 @@ const Container = styled.div`
     max-width: 1400px;
     color: ${({ theme }) => theme.text.p};
     font-size: clamp(16px, 2.5vw, 20px);
-    padding: 5vh 5vw;
+    padding: 5vh 13vw;
     animation: hello 1s ease forwards;
     animation-delay: 1200ms;
     opacity: 0;
     @media (min-width: 750px) {
       width: 90%;
+      padding: 5vh 5vw;
     }
     @media (min-width: 970px) {
       width: 85%;
@@ -115,7 +116,7 @@ const Space = styled.div`
 const Text = styled.h1`
   display: flex;
   color: ${({ theme }) => theme.text.color};
-  font-size: clamp(26px, 3.5vw, 36px);
+  font-size: clamp(10px, 5.5vw, 36px);
   flex-direction: Row;
   justify-content: center;
   align-items: center;
@@ -124,7 +125,7 @@ const Text = styled.h1`
   opacity: 0;
   span {
     color: ${({ theme }) => theme.text.p};
-    font-size: clamp(28px, 3.5vw, 40px);
+    font-size: clamp(10px, 5.5vw, 36px);
     padding-left: 10px;
     animation: hello 1s ease forwards;
     animation-delay: 500ms;
@@ -135,7 +136,7 @@ const Text = styled.h1`
 const TextPrimary = styled(Text)`
   background-color: ${({ theme }) => theme.primaryColor};
   color: ${({ theme }) => theme.button.textColor};
-  font-size: clamp(20px, 2.5vw, 28px);
+  font-size: clamp(10px, 5.5vw, 26px);
   padding: 10px;
   border-radius: 10px;
   animation: hello 1s ease forwards;
@@ -191,16 +192,16 @@ const RowIcons = styled.div`
   justify-content: end;
   align-items: end;
   gap: 10px;
-  top: 25%;
+  bottom: 10%;
   left: 20px;
   i {
-    color: ${({ theme }) => theme.text.color};
+    color: ${({ theme }) => theme.primaryColor};
     font-size: 25px;
     transition: color 300ms;
     padding: 0;
     margin: 0;
     &:hover {
-      color: ${({ theme }) => theme.primaryColor};
+      color: ${({ theme }) => theme.text.color};
     }
   }
 `;
