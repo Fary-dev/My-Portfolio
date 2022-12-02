@@ -1,46 +1,56 @@
-import LineProgress from "./LineProgress";
-import Progress from "./Progress";
-import styled from "styled-components";
-import SymbolSkills from "../../Assets/skills.webp";
+import LineProgress from './LineProgress';
+import Progress from './Progress';
+import styled from 'styled-components';
+import SymbolSkills from '../../Assets/skills.webp';
 
 interface SkillsModel {
   t: any;
 }
 const SkillsList = [
   {
-    name: "dart",
+    name: 'dart',
     percent: 90,
-    color: "#07af9b",
+    color: '#07af9b',
   },
   {
-    name: "flutter",
+    name: 'flutter',
     percent: 95,
-    color: "#0e4f86",
+    color: '#0e4f86',
   },
   {
-    name: "html",
+    name: 'html',
     percent: 95,
-    color: "#c7592a",
+    color: '#c7592a',
   },
   {
-    name: "scss",
+    name: 'scss',
     percent: 97,
-    color: "#72445e",
+    color: '#72445e',
   },
   {
-    name: "javascript",
+    name: 'javascript',
     percent: 85,
-    color: "#ccba20",
+    color: '#ccba20',
   },
   {
-    name: "react",
+    name: 'react',
     percent: 92,
-    color: "#54b6d1",
+    color: '#54b6d1',
   },
   {
-    name: "github",
-    percent: 95,
-    color: "#000",
+    name: 'git',
+    percent: 85,
+    color: '#000',
+  },
+  {
+    name: 'mysql',
+    percent: 70,
+    color: '#52819f',
+  },
+  {
+    name: 'nodeJS',
+    percent: 60,
+    color: '#6fa55e',
   },
 ];
 
@@ -50,7 +60,7 @@ const Skills = ({ t }: SkillsModel) => {
       <Container>
         <Space></Space>
         <Symbol src={SymbolSkills} alt="skills symbol"></Symbol>
-        <Title>{t("skills")}</Title>
+        <Title>{t('skills')}</Title>
         <Column>
           {SkillsList.map((e, idx) => (
             <LineProgress
