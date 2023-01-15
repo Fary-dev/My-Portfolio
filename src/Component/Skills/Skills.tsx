@@ -1,3 +1,5 @@
+/** @format */
+
 import LineProgress from './LineProgress';
 import Progress from './Progress';
 import styled from 'styled-components';
@@ -59,7 +61,7 @@ const Skills = ({ t }: SkillsModel) => {
     <Body>
       <Container>
         <Space></Space>
-        <Symbol src={SymbolSkills} alt="skills symbol"></Symbol>
+        <Symbol src={SymbolSkills} alt='skills symbol'></Symbol>
         <Title>{t('skills')}</Title>
         <Column>
           {SkillsList.map((e, idx) => (
