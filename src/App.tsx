@@ -1,13 +1,13 @@
 /** @format */
 
-import React, { useEffect, useState, lazy, Suspense } from 'react';
+import React, { useState, lazy, Suspense } from 'react';
 import Navbar from './Component/Navbar/Navbar';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import { ThemeProvider } from 'styled-components';
-import { lightTheme, darkTheme } from './Component/Themes';
-import LoadingPage from './Component/LoadingPage';
+import { lightTheme, darkTheme } from './Component/Constants/Themes';
+import LoadingPage from './Component/Pages/LoadingPage';
 
 const HomePage = lazy(() => import('./Component/About/About'));
 const AboutPage = lazy(() => import('./Component/About/About'));
@@ -18,53 +18,63 @@ const SkillsPage = lazy(() => import('./Component/Skills/Skills'));
 const ContactPage = lazy(() => import('./Component/Contact/Contact'));
 
 function App() {
-	const { t, i18n } = useTranslation();
+	const { t: translate, i18n } = useTranslation();
+	const [state, setState] = useState({
+		theme: localStorage.getItem('theme') === 'light' ? 'dark' : 'light',
+		language: localStorage.getItem('lng') === 'de' ? 'de' : 'en',
+	});
 
-	const [theme, setTheme] = useState(
-		localStorage.getItem('theme') === 'light' ? 'dark' : 'light'
-	);
-
-	const ToggleTheme = () => {
-		setTheme((current) => (current === 'light' ? 'dark' : 'light'));
-		localStorage.setItem('theme', theme);
-	};
-	const [language, setLanguage] = useState(
-		localStorage.getItem('lng') === 'de' ? 'de' : 'en'
-	);
+	function ToggleTheme() {
+		setState({
+			...state,
+			theme: state.theme === 'light' ? 'dark' : 'light',
+		});
+		localStorage.setItem('theme', state.theme);
+	}
 
 	const HandleChangeLng = (lng: string) => {
-		if (lng === 'en') {
-			setLanguage('en');
-		} else {
-			setLanguage('de');
-		}
+		setState({ ...state, language: lng === 'en' ? 'en' : 'de' });
 		i18n.changeLanguage(lng);
 		localStorage.setItem('lng', lng);
 	};
 
-	useEffect(() => {
-		ToggleTheme();
-	}, []);
-
 	return (
-		<ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+		<ThemeProvider theme={state.theme === 'light' ? lightTheme : darkTheme}>
 			<Router>
 				<Navbar
-					thm={theme}
+					thm={state.theme}
 					toggleTheme={ToggleTheme}
-					t={t}
+					translate={translate}
 					HandleChangeLng={HandleChangeLng}
-					lng={language}
+					lng={state.language}
 				/>
 				<Suspense fallback={<LoadingPage />}>
 					<Routes>
-						<Route path='/' element={<HomePage t={t} />} />
-						<Route path='/about' element={<AboutPage t={t} />} />
-						<Route path='/projects' element={<ProjectsPage t={t} />} />
-						<Route path='/education' element={<EducationPage t={t} />} />
-						<Route path='/experience' element={<ExperiencePage t={t} />} />
-						<Route path='/skills' element={<SkillsPage t={t} />} />
-						<Route path='/contact' element={<ContactPage t={t} />} />
+						<Route path='/' element={<HomePage translate={translate} />} />
+						<Route
+							path='/about'
+							element={<AboutPage translate={translate} />}
+						/>
+						<Route
+							path='/projects'
+							element={<ProjectsPage translate={translate} />}
+						/>
+						<Route
+							path='/education'
+							element={<EducationPage translate={translate} />}
+						/>
+						<Route
+							path='/experience'
+							element={<ExperiencePage translate={translate} />}
+						/>
+						<Route
+							path='/skills'
+							element={<SkillsPage translate={translate} />}
+						/>
+						<Route
+							path='/contact'
+							element={<ContactPage translate={translate} />}
+						/>
 					</Routes>
 				</Suspense>
 			</Router>
