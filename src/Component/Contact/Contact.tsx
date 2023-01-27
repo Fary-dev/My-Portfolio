@@ -36,15 +36,15 @@ const Contact = ({ translate }: any) => {
 
 	function checkEmail() {
 		var email = document.getElementById('Email') as HTMLInputElement;
-		var filter =
-			// eslint-disable-next-line no-useless-escape
-			/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 
-		if (!filter.test(String(email.innerHTML))) {
+		var filter: RegExp =
+			/^([a-zA-Z0-9_%+-])+@(([a-zA-Z0-9._%+-])+\.)+([a-zA-Z0-9]{2,})+$/i;
+
+		if (!filter.test(String(email.value))) {
 			alert('Please provide a valid email address');
 			return false;
 		}
-		setEmailText(email.innerHTML);
+		setEmailText(email.value);
 		email.innerHTML = emailText;
 	}
 
@@ -83,18 +83,18 @@ const Contact = ({ translate }: any) => {
 							<h2>{translate('contact info')}</h2>
 							<RowForm>
 								<TextField
-									name='fName'
+									name='First Name'
 									type='text'
 									placeholder={translate('first name')}
 									required></TextField>
 								<TextField
-									name='lName'
+									name='Last Name'
 									type='text'
 									placeholder={translate('last name')}
 									required></TextField>
 							</RowForm>
 							<TextField
-								name='email'
+								name='from email'
 								type='email'
 								id='Email'
 								placeholder={translate('email')}
@@ -103,7 +103,7 @@ const Contact = ({ translate }: any) => {
 								}}
 								required></TextField>
 							<Textarea
-								name='massage'
+								name='Massage'
 								id='exampleFormControlTextarea1'
 								placeholder={translate('massage')}
 								required
@@ -301,9 +301,8 @@ const TextField = styled.input`
 		color: ${({ theme }) => theme.text.color};
 	}
 	&::placeholder {
-		color: rgba(105, 105, 105, 0.5);
+		color: rgba(78, 78, 78, 0.5);
 		font-size: 0.8rem;
-		padding-left: 10px;
 	}
 `;
 const Textarea = styled.textarea`
@@ -324,7 +323,6 @@ const Textarea = styled.textarea`
 	&::placeholder {
 		color: rgba(105, 105, 105, 0.5);
 		font-size: 0.8rem;
-		padding-left: 10px;
 	}
 `;
 const Iframe = styled.iframe`
