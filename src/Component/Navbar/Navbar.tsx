@@ -73,6 +73,9 @@ function NavBar({
 		isOpen: false,
 	});
 
+	const setBurgerIconAction = (value: boolean) =>
+		setState({ ...state, isOpen: value });
+
 	return (
 		<>
 			<AppBar
@@ -99,7 +102,7 @@ function NavBar({
 						</Row>
 					</Link>
 
-					<BurgerIcon open={state.isOpen} setOpen={setState.prototype} />
+					<BurgerIcon open={state.isOpen} setOpen={setBurgerIconAction} />
 
 					<Menu open={state.isOpen}>
 						{NavList.map((item) => (

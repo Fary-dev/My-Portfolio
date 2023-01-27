@@ -99,8 +99,10 @@ const Contact = ({ translate }: any) => {
 								id='Email'
 								placeholder={translate('email')}
 								onChange={(e) => {
+									// e.target.value.trim();
 									setEmailText(e.target.value.trim());
 								}}
+								value={emailText}
 								required></TextField>
 							<Textarea
 								name='Massage'
@@ -301,7 +303,7 @@ const TextField = styled.input`
 		color: ${({ theme }) => theme.text.color};
 	}
 	&::placeholder {
-		color: rgba(78, 78, 78, 0.5);
+		color: rgb(150, 150, 150);
 		font-size: 0.8rem;
 	}
 `;
@@ -321,7 +323,7 @@ const Textarea = styled.textarea`
 		color: ${({ theme }) => theme.text.color};
 	}
 	&::placeholder {
-		color: rgba(105, 105, 105, 0.5);
+		color: rgb(150, 150, 150);
 		font-size: 0.8rem;
 	}
 `;
