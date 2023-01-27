@@ -1,4 +1,7 @@
-# Getting Started with Create React App
+# My portfolio website
+
+<img width="783" alt="dark-mode" src="https://user-images.githubusercontent.com/81643256/215116664-d975ec8f-de5d-45dc-bb97-4cccdc0058dd.png">
+<img width="779" alt="light-mode" src="https://user-images.githubusercontent.com/81643256/215116703-1e0e508f-2d77-4597-b9cb-cdcc79523f70.png">
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
